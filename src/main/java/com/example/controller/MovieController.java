@@ -21,7 +21,7 @@ public class MovieController {
 	@Autowired
 	private MovieService movieService;
 
-	@RequestMapping("/all")
+	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	public ResponseEntity<Collection<Movie>> getAllMovies() {
 		return new ResponseEntity<Collection<Movie>>(movieService.getAllMovies(), HttpStatus.OK);
 	}
