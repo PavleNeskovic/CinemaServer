@@ -5,11 +5,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.example.dto.ProjectionInsertDto;
+
 @Entity
 public class Projection {
 	@Id
 	@GeneratedValue
 	private Long id;
+	
+	private String time;
 	
 	@ManyToOne
 	private Movie movie;
@@ -19,14 +23,36 @@ public class Projection {
 
 	/**
 	 * @param id
+	 * @param time
 	 * @param movie
 	 * @param theatre
 	 */
-	public Projection(Long id, Movie movie, Theatre theatre) {
+	public Projection(Long id, String time, Movie movie, Theatre theatre) {
 		super();
 		this.id = id;
+		this.time = time;
 		this.movie = movie;
 		this.theatre = theatre;
+	}
+
+	/**
+	 * @param time
+	 * @param movie
+	 * @param theatre
+	 */
+	public Projection(String time, Movie movie, Theatre theatre) {
+		super();
+		this.time = time;
+		this.movie = movie;
+		this.theatre = theatre;
+	}
+
+	/**
+	 * @param time
+	 */
+	public Projection(String time) {
+		super();
+		this.time = time;
 	}
 
 	/**
@@ -44,6 +70,14 @@ public class Projection {
 		this.id = id;
 	}
 
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
 	public Movie getMovie() {
 		return movie;
 	}
@@ -59,6 +93,9 @@ public class Projection {
 	public void setTheatre(Theatre theatre) {
 		this.theatre = theatre;
 	}
+
+	
+
 	
 	
 }

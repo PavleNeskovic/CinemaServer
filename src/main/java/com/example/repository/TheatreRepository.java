@@ -7,4 +7,5 @@ import com.example.model.Theatre;
 
 @Repository
 public interface TheatreRepository extends JpaRepository<Theatre, Long> {
+	public Theatre findByName(String name);
 }

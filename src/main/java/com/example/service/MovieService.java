@@ -16,12 +16,14 @@ public class MovieService {
 	private MovieRepository movieRepository;
 	
 	public Collection<Movie> getAllMovies(){
-		Collection<Movie> movies = movieRepository.findAll();
-		return movies;
+		return movieRepository.findAll();
 	}
 
 	public void insertNewMovie(MovieInsertDto dto) {
-		Movie newMovie = new Movie(dto.getTitle());
-		movieRepository.save(newMovie);
+		movieRepository.save(new Movie(dto.getTitle(),dto.getDescription(),dto.getImageUrl()));
+	}
+
+	public Movie getMovieByTitle(String title) {
+		return movieRepository.findByTitle(title);
 	}
 }

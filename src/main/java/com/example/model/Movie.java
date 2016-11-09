@@ -9,7 +9,9 @@ public class Movie {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String title;
+	private String title = "";
+	private String description = "";
+	private String imageUrl = "";
 	/**
 	 * 
 	 */
@@ -25,7 +27,30 @@ public class Movie {
 		this.id = id;
 		this.title = title;
 	}
-	
+	/**
+	 * @param title
+	 * @param description
+	 * @param imageUrl
+	 */
+	public Movie(String title, String description, String imageUrl) {
+		super();
+		this.title = title;
+		this.description = description;
+		this.imageUrl = imageUrl;
+	}
+	/**
+	 * @param id
+	 * @param title
+	 * @param description
+	 * @param imageUrl
+	 */
+	public Movie(Long id, String title, String description, String imageUrl) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.imageUrl = imageUrl;
+	}
 	/**
 	 * @param title
 	 */
@@ -44,6 +69,18 @@ public class Movie {
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public String getImageUrl() {
+		return imageUrl;
+	}
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 	
 	

@@ -10,24 +10,24 @@ public class Theatre {
 	@GeneratedValue
 	private Long id;
 	
-	private String theatreName;
+	private String name;
 
 	/**
 	 * @param id
-	 * @param theatreName
+	 * @param name
 	 */
-	public Theatre(Long id, String theatreName) {
+	public Theatre(Long id, String name) {
 		super();
 		this.id = id;
-		this.theatreName = theatreName;
+		this.name = name;
 	}
 
 	/**
-	 * @param theatreName
+	 * @param name
 	 */
-	public Theatre(String theatreName) {
+	public Theatre(String name) {
 		super();
-		this.theatreName = theatreName;
+		this.name = name;
 	}
 
 	/**
@@ -45,13 +45,15 @@ public class Theatre {
 		this.id = id;
 	}
 
-	public String getTheatreName() {
-		return theatreName;
+	public String getName() {
+		return name;
 	}
 
-	public void setTheatreName(String theatreName) {
-		this.theatreName = theatreName;
+	public void setName(String name) {
+		this.name = name;
 	}
-	
+
+
+
 	
 }
