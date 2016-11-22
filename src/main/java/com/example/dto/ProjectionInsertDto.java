@@ -5,6 +5,7 @@ public class ProjectionInsertDto {
 	private String movieTitle;
 	private String theatreName;
 	private String time;
+
 	/**
 	 * @param movieTitle
 	 * @param theatreName
@@ -39,6 +40,6 @@ public class ProjectionInsertDto {
 	}
 	public void setTime(String time) {
 		this.time = time;
-	}
+	}	
 	
 }

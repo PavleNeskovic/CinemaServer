@@ -23,15 +23,28 @@ public class ProjectionService {
 	@Autowired
 	private TheatreService theatreService;
 	
-	public void addProjection(ProjectionInsertDto dto){
+	public Projection addProjection(ProjectionInsertDto dto){
 		Movie movieToAdd = movieService.getMovieByTitle(dto.getMovieTitle());
 		Theatre theatreToAdd = theatreService.getTheatreByName(dto.getTheatreName());
-		Projection projection = new Projection(dto.getTime(),movieToAdd,theatreToAdd);
+		//seatsCreated is set to false on creation, PUT method will set this to true when seats are created 
+		Projection projection = new Projection(dto.getTime(),movieToAdd,theatreToAdd,false);
 		projectionRepository.save(projection);
+		return projection;
 	}
 
 	public Collection<Projection> getProjectionsByTitle(String title) {
 		Movie movieToAdd = movieService.getMovieByTitle(title);
 		return projectionRepository.findByMovie(movieToAdd);
+	}
+
+	public Projection getProjectionById(String id) {
+		return projectionRepository.findOne(Long.valueOf(id));
+	}
+	
+	public Projection updateSeatsCreatedById(Long id){
+		Projection projection = getProjectionById(String.valueOf(id));
+		projection.setSeatsCreated(true);
+		projectionRepository.save(projection);
+		return projection;
 	}
 }

@@ -20,19 +20,25 @@ public class Projection {
 	
 	@ManyToOne
 	private Theatre theatre;
+	
+	private Boolean seatsCreated;
+
+
 
 	/**
 	 * @param id
 	 * @param time
 	 * @param movie
 	 * @param theatre
+	 * @param seatsCreated
 	 */
-	public Projection(Long id, String time, Movie movie, Theatre theatre) {
+	public Projection(Long id, String time, Movie movie, Theatre theatre, Boolean seatsCreated) {
 		super();
 		this.id = id;
 		this.time = time;
 		this.movie = movie;
 		this.theatre = theatre;
+		this.seatsCreated = seatsCreated;
 	}
 
 	/**
@@ -40,11 +46,12 @@ public class Projection {
 	 * @param movie
 	 * @param theatre
 	 */
-	public Projection(String time, Movie movie, Theatre theatre) {
+	public Projection(String time, Movie movie, Theatre theatre, Boolean seatsCreated) {
 		super();
 		this.time = time;
 		this.movie = movie;
 		this.theatre = theatre;
+		this.seatsCreated = seatsCreated;
 	}
 
 	/**
@@ -93,6 +100,16 @@ public class Projection {
 	public void setTheatre(Theatre theatre) {
 		this.theatre = theatre;
 	}
+
+	public Boolean getSeatsCreated() {
+		return seatsCreated;
+	}
+
+	public void setSeatsCreated(Boolean seatsCreated) {
+		this.seatsCreated = seatsCreated;
+	}
+	
+	
 
 	
 
