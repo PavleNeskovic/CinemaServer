@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,23 +24,27 @@ public class ProjectionController {
 	@Autowired
 	private ProjectionService projectionService;
 	
+	@PreAuthorize("permitAll")
 	@RequestMapping(value = "/addProjection", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Projection> insertNewMovie(@RequestBody ProjectionInsertDto dto) {
 		Projection projection = projectionService.addProjection(dto);
 		return new ResponseEntity<>(projection, HttpStatus.CREATED);
 	}
 	
+	@PreAuthorize("permitAll")
 	@RequestMapping(value = "/projection/setSeatCreated", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Projection> setSeatCreatedById(@RequestBody ProjectionSeatsCreatedDto dto) {
 		Projection projection = projectionService.updateSeatsCreatedById(dto.getId());
 		return new ResponseEntity<>(projection, HttpStatus.OK);
 	}
 	
+	@PreAuthorize("permitAll")
 	@RequestMapping(value = "/projections/{title}", method = RequestMethod.GET)
 	public ResponseEntity<Collection<Projection>> getProjectionsByTitle(@PathVariable String title) {
 		return new ResponseEntity<Collection<Projection>>(projectionService.getProjectionsByTitle(title), HttpStatus.OK);
 	}
 	
+	@PreAuthorize("permitAll")
 	@RequestMapping(value = "/projection/byid/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Projection> getProjectionById(@PathVariable String id) {
 		return new ResponseEntity<Projection>(projectionService.getProjectionById(id), HttpStatus.OK);
