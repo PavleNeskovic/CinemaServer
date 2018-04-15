@@ -45,6 +45,12 @@ public class ProjectionController {
 	}
 	
 	@PreAuthorize("permitAll")
+	@RequestMapping(value = "/projections/byid/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Collection<Projection>> getProjectionsById(@PathVariable String id) {
+		return new ResponseEntity<Collection<Projection>>(projectionService.getProjectionsById(id), HttpStatus.OK);
+	}
+	
+	@PreAuthorize("permitAll")
 	@RequestMapping(value = "/projection/byid/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Projection> getProjectionById(@PathVariable String id) {
 		return new ResponseEntity<Projection>(projectionService.getProjectionById(id), HttpStatus.OK);

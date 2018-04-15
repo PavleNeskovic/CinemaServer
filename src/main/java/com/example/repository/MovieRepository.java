@@ -8,4 +8,5 @@ import com.example.model.Movie;
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, Long> {
 	public Movie findByTitle(String title);
+	public Movie findById(Long id);
 }

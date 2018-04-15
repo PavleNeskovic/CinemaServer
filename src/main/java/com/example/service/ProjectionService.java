@@ -36,6 +36,11 @@ public class ProjectionService {
 		Movie movieToAdd = movieService.getMovieByTitle(title);
 		return projectionRepository.findByMovie(movieToAdd);
 	}
+	
+	public Collection<Projection> getProjectionsById(String id) {
+		Movie movieToAdd = movieService.getMovieById(Long.valueOf(id));
+		return projectionRepository.findByMovie(movieToAdd);
+	}
 
 	public Projection getProjectionById(String id) {
 		return projectionRepository.findOne(Long.valueOf(id));
