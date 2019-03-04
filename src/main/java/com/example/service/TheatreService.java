@@ -20,9 +20,9 @@ public class TheatreService {
 		return theatreRepository.findAll();
 	}
 
-	public void insertNewTheatre(TheatreInsertDto dto) {
+	public Theatre insertNewTheatre(TheatreInsertDto dto) {
 		Theatre theatre = new Theatre(dto.getName());
-		theatreRepository.save(theatre);
+		return theatreRepository.save(theatre);
 	}
 	
 	public Theatre getTheatreByName(String name){
